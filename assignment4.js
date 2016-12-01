@@ -11,7 +11,18 @@
 // $.html(), $.text(), etc.
 // keyup events could be helpful to get value of field as the user types
 
+var xhr = new XMLHttpRequest();
+
 (function() {
-  // Magic!
-  console.log('Keepin\'n it clean with an external script!');
+  xhr.open("GET", "http://www.mattbowytz.com/simple_api.json?data=all", false);
+  xhr.send();
+  var response = JSON.parse(xhr.response);
+  var interests = response.data.interests;
+  var programming = response.data.programming;
+  var searchTerms = interests.concat(programming);
+  console.log(searchTerms);
 })();
+
+function displaySearchTerms() {
+  console.log();
+}
