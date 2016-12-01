@@ -96,3 +96,18 @@ input:-moz-placeholder {
   line-height: 45px;
   text-align: center;
 }
+
+.suggestions {
+  display: none;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 26px;
+  border-radius: 35px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-style: solid;
+  border-width: 5px;
+  padding: 15px;
+  width: 85%;
+  margin: auto;
+  list-style-type: none;
+}
