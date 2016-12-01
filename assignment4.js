@@ -11,18 +11,16 @@
 // $.html(), $.text(), etc.
 // keyup events could be helpful to get value of field as the user types
 
-var xhr = new XMLHttpRequest();
+var searchTerms;
 
 (function() {
-  xhr.open("GET", "http://www.mattbowytz.com/simple_api.json?data=all", false);
-  xhr.send();
+  var request = new XMLHttpRequest();
+  request.open("GET", "http://www.mattbowytz.com/simple_api.json?data=all", false);
+  request.send();
   var response = JSON.parse(xhr.response);
-  var interests = response.data.interests;
-  var programming = response.data.programming;
-  var searchTerms = interests.concat(programming);
-  console.log(searchTerms);
+  searchTerms = response.data.interests.concat(response.data.programming);
 })();
 
-function displaySearchTerms() {
-  console.log();
-}
+$(".flexsearch-input").keyup(function(){
+  console.log($(this).val());
+});
