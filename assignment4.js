@@ -37,7 +37,7 @@ $(".flexsearch-input").keyup(function() {
     }
   }
 
-  // Display suggestions if needed
+  // Display suggestions if needed, hide them if there are none
   if (suggestions.length > 0) {
     $(".suggestions").slideDown("fast");
     $(".suggestions").empty();
