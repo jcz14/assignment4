@@ -27,15 +27,28 @@ var searchTerms;
 
 // This function fires when the user types into the search field
 $(".flexsearch-input").keyup(function() {
-  var matches = [];
+  var suggestions = [];
   var input = $(this).val();
 
   // Substring search algorithm
   for (var i = 0; i < searchTerms.length; i++) {
     if ((input.length > 0) && (input.toLowerCase() == searchTerms[i].substring(0, input.length).toLowerCase())) {
-      matches.push(searchTerms[i]);
+      suggestions.push(searchTerms[i]);
     }
   }
 
-  console.log("OUTPUT: " + input + " [" + matches + "]");
+  // Display suggestions if needed
+  if (suggestions.length > 0) {
+    $(".suggestions").slideDown("fast");
+    $(".suggestions").empty();
+    $(".suggestions").append("<ul>");
+    for (var k = 0; k < suggestions.length; k++) {
+      $(".suggestions").append("<li>" + "<a target='_blank' href='https://www.google.com/search?q=" + suggestions[k] + "'>" + suggestions[k] + "</a>");
+    }
+    $(".suggestions").append("</ul><br />");
+  } else {
+    $(".suggestions").slideUp("fast");
+    $(".suggestions").empty();
+  }
+
 });
