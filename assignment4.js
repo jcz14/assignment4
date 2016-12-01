@@ -16,11 +16,13 @@ var searchTerms;
 
 // Request data from API and store response in the global variable defined above
 (function() {
-  var request = new XMLHttpRequest();
-  request.open("GET", "http://www.mattbowytz.com/simple_api.json?data=all", false);
-  request.send();
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://www.mattbowytz.com/simple_api.json?data=all", false);
+  xhr.send();
   var response = JSON.parse(xhr.response);
-  searchTerms = response.data.interests.concat(response.data.programming);
+  var interests = response.data.interests;
+  var programming = response.data.programming;
+  searchTerms = interests.concat(programming);
 })();
 
 // This function fires when the user types into the search field
