@@ -11,8 +11,10 @@
 // $.html(), $.text(), etc.
 // keyup events could be helpful to get value of field as the user types
 
+// Global variable containing array with search terms
 var searchTerms;
 
+// Request data from API and store response in the global variable defined above
 (function() {
   var request = new XMLHttpRequest();
   request.open("GET", "http://www.mattbowytz.com/simple_api.json?data=all", false);
@@ -21,6 +23,7 @@ var searchTerms;
   searchTerms = response.data.interests.concat(response.data.programming);
 })();
 
+// This function fires when the user types into the search field
 $(".flexsearch-input").keyup(function(){
   console.log($(this).val());
 });
