@@ -26,6 +26,16 @@ var searchTerms;
 })();
 
 // This function fires when the user types into the search field
-$(".flexsearch-input").keyup(function(){
-  console.log($(this).val());
+$(".flexsearch-input").keyup(function() {
+  var matches = [];
+  var input = $(this).val();
+
+  // Substring search algorithm
+  for (var i = 0; i < searchTerms.length; i++) {
+    if ((input.length > 0) && (input.toLowerCase() == searchTerms[i].substring(0, input.length).toLowerCase())) {
+      matches.push(searchTerms[i]);
+    }
+  }
+
+  console.log("OUTPUT: " + input + " [" + matches + "]");
 });
